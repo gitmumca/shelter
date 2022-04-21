@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>shelter</title>
+	<link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../popup.css">
+  <link rel="icon" href="../../assets/images/favicon.png"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">  
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body class="body">
+
+  <section class="start-screen">
+
+  	<header class="header">
+
+      <nav class="nav-header">
+
+        <ul class="flex-header">
+          <li><a class="a-header" href="../main/index.html">About the shelter</a></li>
+          <li><a class="a-header accent" href="index.html">Our pets</a></li>
+          <li><a class="a-header help" href="../main/index.html#help">Help the shelter</a></li>
+          <li><a class="a-header" href="#contacts">Contacts</a></li>
+        </ul>
+
+        <input id="menu-toggle-nav" type="checkbox" />
+        <label class="menu-nav" for="menu-toggle-nav">
+          <span></span>
+        </label>
+
+        <div class="menu-area">
+          <ul class="menu-box">
+            <li><a class="menu-item" href="../main/index.html">About the shelter</a></li>
+            <li><a class="menu-item accent" href="index.html">Our pets</a></li>
+            <li><a class="menu-item" href="../main/index.html#help">Help the shelter</a></li>
+            <li><a class="menu-item" href="#contacts">Contacts</a></li>
+          </ul>
+        </div>
+
+      </nav>
+
+      <button class="logo">
+        <h1 class="title">Cozy House</h1>
+        <div class="subtitle">Shelter for pets in Boston</div>
+      </button>
+
+  	</header>
+
+  </section>
+
+  <section class="pets" id="pets">
+    <div class="cont-pets">
+
+      <h2 class="heading-pets">Our friends who <br> are looking for a house</h2>
+      <div class="slider">
+        <div class="cont-card">
+<!--                                               
+           <div class="card">
+            <div class="card_img pet_img0"></div>
+            <h6 class="subheading-pets pet_name0">Katrine</h6>
+            <button class="btn_pet" id="0">Learn more</button>
+          </div>
+          <div class="card">
+            <div class="card_img pet_img1"></div>
+            <h6 class="subheading-pets pet_name1">Jennifer</h6>
+            <button class="btn_pet" id="1">Learn more</button>
+          </div>
+          <div class="card">
+            <div class="card_img pet_img2"></div>
+            <h6 class="subheading-pets pet_name2">Woody</h6>
+            <button class="btn_pet" id="2">Learn more</button>
+          </div>
+          <div class="card card-320">
+            <div class="card_img pet_img3"></div>
+            <h6 class="subheading-pets pet_name3">Sophia</h6>
+            <button class="btn_pet" id="3">Learn more</button>
+          </div>
+          <div class="card card-320">
+            <div class="card_img pet_img4"></div>
+            <h6 class="subheading-pets pet_name4">Timmy</h6>
+            <button class="btn_pet" id="4">Learn more</button>
+          </div>
+          <div class="card card-320">
+            <div class="card_img pet_img5"></div>
+            <h6 class="subheading-pets pet_name5">Charly</h6>
+            <button class="btn_pet" id="5">Learn more</button>
+          </div>
+          <div class="card card-768 card-320">
+            <div class="card_img pet_img6"></div>
+            <h6 class="subheading-pets pet_name6">Scarlett</h6>
+            <button class="btn_pet" id="6">Learn more</button>
+          </div>
+          <div class="card card-768 card-320">
+            <div class="card_img pet_img7"></div>
+            <h6 class="subheading-pets pet_name7">Freddie</h6>
+            <button class="btn_pet" id="7">Learn more</button>
+          </div>
+-->                               
+        </div>
+      </div>
+
+      <div class="cont-buttons">
+        
+        <button class="svg_nav svg_left svg_left_hover" id="first">
+          <svg width="25" height="11" viewBox="0 0 25 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.94687 10.7852L0.913671 6.08789V4.98438L9.94687 0.287109V1.625L2.43711 5.53125L9.94687 9.44727V10.7852ZM24.018 10.7852L14.9848 6.08789V4.98438L24.018 0.287109V1.625L16.5082 5.53125L24.018 9.44727V10.7852Z"/>
+          </svg>
+        </button>
+
+        <button class="svg_nav svg_left svg_left_hover" id="left">
+          <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.98242 10.7852L0.949219 6.08789V4.98438L9.98242 0.287109V1.625L2.47266 5.53125L9.98242 9.44727V10.7852Z"/>
+          </svg>  
+        </button>
+
+        <button class="center" id="center">1</button>
+
+        <button class="svg_nav svg_right svg_right_hover" id="right">
+          <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.04102 6.08789L0.0078125 10.7852V9.44727L7.51758 5.53125L0.0078125 1.625V0.287109L9.04102 4.98438V6.08789Z"/>
+          </svg>
+        </button>
+
+        <button class="svg_nav svg_right svg_right_hover" id="last">
+          <svg width="25" height="11" viewBox="0 0 25 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.0055 6.08789L0.972265 10.7852V9.44727L8.48203 5.53125L0.972265 1.625V0.287109L10.0055 4.98438V6.08789ZM24.0766 6.08789L15.0434 10.7852V9.44727L22.5531 5.53125L15.0434 1.625V0.287109L24.0766 4.98438V6.08789Z"/>
+          </svg>  
+        </button>
+
+      </div>
+
+     
+    </div>    
+  </section>
+
+  <section class="footer-puppy" id="contacts">
+    <div class="cont-footer">
+
+      <div class="content-footer">
+        <h2 class="heading-footer">For questions and suggestions</h2>
+        <div class="contacts">
+          <div class="svg-footer">
+            <img src="../../assets/svg/mail.svg" alt="">
+          </div> 
+          <a class="subheading-footer" href="mailto:ask@htmlbook.ru?subject=Вопрос по HTML">email@shelter.com</a>
+        </div>
+        <div class="contacts-down">
+          <div class="svg-footer">
+            <img src="../../assets/svg/phone.svg" alt="">
+          </div> 
+          <a class="subheading-footer" href="tel:+13 674 567 75 54">+13 674 567 75 54</a>
+        </div>
+      </div>
+      <div class="content-footer-right">
+        <h2 class="heading-footer">We are waiting for your visit</h2>
+        <div class="contacts-right">
+          <div class="svg-footer">
+            <img src="../../assets/svg/pin.svg" alt="">
+          </div> 
+          <a class="subheading-footer-right-up" href="https://www.google.com/maps/@45.585444,13.007813,6z" target="blank" id="map">1 Central Street, Boston <br> (entrance from the store)</a>
+        </div>
+        <div class="contacts-right">
+          <div class="svg-footer">
+            <img src="../../assets/svg/pin.svg" alt="">
+          </div> 
+          <a class="subheading-footer-right" href="https://www.google.com/maps/@42.585444,13.007813,6z" target="blank">18 South Park, London</a>
+        </div>
+      </div>
+      <div class="footer-dog"></div>
+
+    </div>    
+  </section>
+
+  <div id="popup" class="popup">
+    <a href="#pets" class="popup-area"></a>
+    <div class="popup-body">
+      <div class="popup-content">
+        <button class="popup-close">&times</button>
+        <div class="m-modal">
+          <div class="m-img"></div>
+          <div class="m-card">
+            <h2 class="m-name">Jennifer</h2>
+            <h4 class="m-type">Dog - Labrador</h4>
+            <h5 class="m-description">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys</h5>
+            <ul class="ul-pet">
+              <li class="li-pet"><h5><div class="m-bold">Age:</div><div class="m-age"></div></h5></li>
+              <li class="li-pet"><h5><div class="m-bold">Inoculations:</div><div class="m-inoculations">none</div></h5></li>
+              <li class="li-pet"><h5><div class="m-bold">Diseases:</div><div class="m-diseases">none</div></h5></li>
+              <li class="li-pet"><h5><div class="m-bold">Parasites:</div><div class="m-parasites"></div></h5></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../pets.js"></script>  
+  <script src="../script.js"></script>  
+
+</body>
+</html>

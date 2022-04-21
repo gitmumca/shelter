@@ -1,0 +1,230 @@
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(29, 29, 29, 0.6);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.popup-area {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.popup-body {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+/*  transition: all 0.8s ease 0s;*/
+}
+
+.popup-content {
+  max-width: 954px;
+  height: 554px;
+
+/*  border-radius: 10px;*/
+  background-color: transparent;
+  position: relative;
+}
+
+.popup-close {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  font-size: 30px;
+
+  border-radius: 100px;
+  border: solid 2px var(--color-primary);
+  background-color: transparent;
+  right: 0px;
+/*  top: 10px;*/
+}
+/*
+.popup-close:hover,
+.popup-area:hover > .popup-close {
+  border: 2px solid var(--color-primary-light);
+  background-color: var(--color-primary-light); 
+}
+*/
+.m-modal {
+  display: flex;
+  width: 900px;
+  height: 500px;
+
+  border-radius: 10px;
+  margin: 52px 52px 0 0;
+  background-color: var(--color-light-s);
+ /* border: solid 2px red;*/
+}
+
+.m-img {
+  width: 488px;
+  height: 500px;
+  background: url("assets/images/jennifer.png") 0px/auto 100% no-repeat;      
+  border-radius: 10px;
+
+  margin: 0 12px 0 0;
+}
+
+.m-card {
+  display: flex;
+  flex-direction: column; 
+/*  align-items: center;*/
+
+  width: 355px;
+  margin: 40px 0 0;
+}
+
+.m-name,
+.m-type {
+  text-align: left;
+  margin: 10px 0 0;
+  color: var(--gradient-100);
+  letter-spacing: calc(1em/16);
+}
+
+.m-description {
+/*  font-size: 20px;
+  line-height: 22px;*/
+  letter-spacing: calc(1em/16);
+  margin: 40px auto 0;
+  color: var(--gradient-100);
+  letter-spacing: calc(1em/16);
+}
+
+.ul-pet {
+  margin: 40px 0 0; 
+}
+
+.li-pet h5 {
+  display: flex;
+  margin: 10px 0 0;
+  color: var(--gradient-100);
+  letter-spacing: calc(1em/16);
+}
+
+.li-pet {
+  position: relative;
+  margin: 0 15px;
+} 
+
+.m-age,
+.m-inoculations,
+.m-diseases,
+.m-parasites {
+  margin: 0 0 0 10px;
+}
+
+.m-bold {
+  font-weight: 600;
+}
+
+.li-pet:before {
+  content: "";
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+
+  left: -12px;
+  top: 7px;
+}
+
+@media (max-width: 768px) {
+
+  h5 {
+    font-size: 13px;
+    line-height: 14px;
+  }
+
+  .popup-content {
+    max-width: 684px;
+    height: 404px;
+  }
+    
+  .m-modal {
+    width: 630px;
+    height: 350px;
+  }
+
+  .m-card {
+    width: 260px;
+    margin: 10px 0 0;
+  }
+  
+  .m-img {
+    width: 350px;
+    height: 350px;
+  }
+
+  .m-name,
+  .m-type {
+    margin: 10px 0 0;
+  }
+
+  .m-description,
+  .ul-pet {
+    margin: 20px 0 0;
+  }  
+
+  .li-pet h5 {
+    margin: 5px 0 0;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .m-img {
+    display: none;
+  }
+/*  
+}
+
+@media (max-width: 320px) {
+*/
+  h5 {
+    font-size: 13px;
+    line-height: 14px;
+  }
+
+  .popup-content {
+    max-width: 270px;
+    height: 393px;
+  }
+    
+  .m-modal {
+    width: 240px;
+    height: auto;
+  }
+
+  .m-card {
+    width: 220px;
+    height: auto;
+    margin: 10px;
+  }
+
+  .m-name,
+  .m-type {
+    text-align: center;
+    margin: 10px 0 0;
+  }
+
+  .m-description,
+  .ul-pet {
+    text-align: justify;
+    margin: 20px 0 0;
+  }  
+
+  .li-pet h5 {
+    margin: 5px 0 0;
+  }
+}
