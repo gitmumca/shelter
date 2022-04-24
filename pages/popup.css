@@ -32,6 +32,7 @@
 /*  border-radius: 10px;*/
   background-color: transparent;
   position: relative;
+/*  display: block;*/
 }
 
 .popup-close {
@@ -67,7 +68,7 @@
 .m-img {
   width: 488px;
   height: 500px;
-  background: url("assets/images/jennifer.png") 0px/auto 100% no-repeat;      
+/*  background: url("assets/images/jennifer.png") 0px/auto 100% no-repeat;      */
   border-radius: 10px;
 
   margin: 0 12px 0 0;

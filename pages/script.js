@@ -10,8 +10,17 @@ const items = document.querySelectorAll('.menu-item');
 items.forEach(el => el.addEventListener('click', function() {
 	document.querySelector('.menu-area').style.visibility = 'hidden';
 	document.getElementById('menu-toggle-nav').checked = false;
-  document.querySelector('.menu-box').style.left == '100%';
+//  document.querySelector('.menu-box').style.left == '100%';
   document.querySelector('.body').style.overflowY = 'visible';
+
+  let percent = (location.pathname.indexOf('main') > -1 ? 105 : 108) - Math.trunc(320 / document.documentElement.clientWidth * 100);
+  for (let i=0; i<100; i++) {
+    let left;
+//    setTimeout(15);
+    left = i + percent;
+    document.querySelector('.menu-box').style.left = ((left > 100) ? 105 : left) + '%';
+  }
+
 }))
 
 // закрытие меню бублика после нажатия на затемненную область
@@ -34,25 +43,6 @@ area.addEventListener('click', function() {
 // открытие/закрытие меню бублика
 const menu = document.getElementById('menu-toggle-nav');
 menu.addEventListener('click', function() {
-/*
-  let percent = (location.pathname.indexOf('main') > -1 ? 105 : 108) - Math.trunc(320 / document.documentElement.clientWidth * 100);
-  let start = Date.now();
-
-  let timerIn = setInterval(function() {
-    let left;
-    let timePassed = Date.now() - start;
-      if (document.getElementById('menu-toggle-nav').checked) {
-        left = Math.trunc((2000 - timePassed) / 20);
-        document.querySelector('.menu-box').style.left = (left < percent) ? percent : left + '%';
-      } else {
-        left = 160 - Math.trunc((2000 - timePassed) / 20);
-        document.querySelector('.menu-box').style.left = (left > 100) ? 105 : left + '%';
-      }
-      console.log(document.querySelector('.menu-box').style.left, 'timePassed', timePassed);
-      if (timePassed > 2000) clearInterval(timerIn);
-    }, 10); 
-*/
-
   if (document.getElementById('menu-toggle-nav').checked) {
     document.querySelector('.menu-area').style.visibility = 'visible';
     document.querySelector('.body').style.overflowY = 'hidden';
@@ -61,20 +51,21 @@ menu.addEventListener('click', function() {
     document.querySelector('.body').style.overflowY = 'visible';
   }
 
-  let percent = (location.pathname.indexOf('main') > -1 ? 105 : 108) - Math.trunc(320 / document.documentElement.clientWidth * 100);
+  let percent = 100 - Math.trunc(320 / document.documentElement.clientWidth * 100);
   for (let i=0; i<100; i++) {
     let left;
 //    setTimeout(15);
     if (document.getElementById('menu-toggle-nav').checked) {
-      left = 100 - i;
+      left = 99 - i - percent;
       document.querySelector('.menu-box').style.left = ((left < percent) ? percent : left) + '%';
+//      console.log(percent, document.querySelector('.menu-box').style.left);
     } else {
       left = i + percent;
-      document.querySelector('.menu-box').style.left = ((left > 100) ? 105 : left) + '%';
+      document.querySelector('.menu-box').style.left = ((left > 100) ? 100 : left) + '%';
     }
   }
 })
-
+/*
 var arrAll = (document.documentElement.clientWidth <= 320) ? 
                [0,0,0,1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,0,0,0,1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7] 
                   : (document.documentElement.clientWidth <= 768) ? 
@@ -86,35 +77,56 @@ var arrPage = (document.documentElement.clientWidth <= 320) ?
                   : (document.documentElement.clientWidth <= 768) ? 
                   [0,0,0,0,0,0]   
                   : [0,0,0,0,0,0,0,0];
-
-var curPage = 1;
 var countItems = (document.documentElement.clientWidth <= 320) ? 
                      3 : (document.documentElement.clientWidth <= 768) ? 6 : 8;
 
 var countPages = (document.documentElement.clientWidth <= 320) ? 
                      16 : (document.documentElement.clientWidth <= 768) ? 8 : 6;
+*/
+
+var arrAll;
+var arrPage;
+var curPage = 1;
+var countItems = (document.documentElement.clientWidth < 768) ? 
+                     3 : (document.documentElement.clientWidth < 1280) ? 6 : 8;
+
+var countPages = (document.documentElement.clientWidth < 768) ? 
+                     16 : (document.documentElement.clientWidth < 1280) ? 8 : 6;
 
 function initArrAll() {
 
-  arrAll = randomArr8();
+  let arrAdd;
+  arrAll = randomArr(countItems);
   arrPage = arrAll;
+
   if (location.pathname.indexOf('main') > -1) {
     countItems = 8; 
   }
-  else {
-    arrAllAdd = '' + arrAll[1] + arrAll[0] + arrAll[3] + arrAll[2] + arrAll[5] + arrAll[4] + arrAll[7] + arrAll[6];
-    arrAll = (arrAll.join('') + arrAllAdd + arrAll.join('') + arrAllAdd + arrAll.join('') + arrAllAdd + arrAll.join('') + arrAllAdd).split('');
+  else {    
+/*    arrAdd = '' + arrAll[1] + arrAll[0] + arrAll[3] + arrAll[2] + arrAll[5] + arrAll[4] + arrAll[7] + arrAll[6];
+    arrAll = (arrAll.join('') + arrAdd).split('');
+    for (let i=0; i<2; i++) {
+      arrAdd = randomArr8();
+      let arrReverse = '' + arrAdd[1] + arrAdd[0] + arrAdd[3] + arrAdd[2] + arrAdd[5] + arrAdd[4] + arrAdd[7] + arrAdd[6];
+      arrAll = (arrAll.join('') + arrAdd.join('') + arrReverse).split('');
+    }
+*/    
+    for (let i=0; i<countPages-1; i++) {
+      arrAdd = randomArr(countItems);
+/*      let arrReverse = '' + arrAdd[1] + arrAdd[0] + arrAdd[3] + arrAdd[2] + arrAdd[5] + arrAdd[4] + arrAdd[7] + arrAdd[6];*/
+      arrAll = (arrAll.join('') + arrAdd.join('')).split('');
+    }
 
   }
 }
 
-function randomArr8() {
+function randomArr(count) {
   let flag;
   let num;    
   let arr = [];
 
   arr.push(getRandomIntInclusive(0,7));
-  for (let i=0; i<7; i++) {
+  for (let i=0; i<count-1; i++) {
     do {
       flag = false;
       num = getRandomIntInclusive(0,7);
@@ -142,14 +154,23 @@ window.onload = function() {
 function createCards(index){
 
   let parent = document.querySelector('.cont-card');
+/*  
   let count = (document.documentElement.clientWidth <= 320) ? 
               3 : (document.documentElement.clientWidth <= 768) ? 6 : 8;
+*/              
+  let count = (document.documentElement.clientWidth < 768) ? 
+              3 : (document.documentElement.clientWidth < 1280) ? 6 : 8;
+              
   let before = document.querySelector('.before');
 
   if (index) {
     parent = document.querySelector('.slider');
+/*    
     count = (document.documentElement.clientWidth <= 320) ? 
                 1 : (document.documentElement.clientWidth <= 768) ? 2 : 3;
+*/                
+    count = (document.documentElement.clientWidth < 768) ? 
+                1 : (document.documentElement.clientWidth < 1280) ? 2 : 3;
   }
 
   for (i=0; i<count; i++) {
@@ -182,8 +203,6 @@ function createCards(index){
     let myBtn = document.createElement('button');
       myBtn.classList.add('btn_pet');
       myBtn.textContent = "Learn more";
-/*      myBtn.id = i;
-      myBtn.setAttribute('onclick', 'show_popup(this.id);')*/
 
     myCard.appendChild(myA);
     myCard.appendChild(myH6);
@@ -198,51 +217,6 @@ function createCards(index){
 document.querySelectorAll('.svg_left').forEach(el => el.classList.remove('svg_left_hover'));
 
 function refreshPet() {
-/*
-  for (let i=0; i<countItems; i++) {
-    let pet_img = document.querySelector('.pet_img' + i);
-    pet_img.style.opacity = 0
-  }
- 
-
-  for (let i=0; i<countItems; i++) {
-    let pet_img = document.querySelector('.pet_img' + i);
-    pet_img.style.opacity = 1
-  }
-   
-  for (let i=0; i<countItems; i++) {
-    let pet_img = document.querySelector('.pet_img' + i);
-    if (pet_img != null) {
-      pet_img.style.background = 'url(' + pets[arrPage[i]].img + ') 0px/auto 100% no-repeat';
-    }
-
-    let pet_name = document.querySelector('.pet_name' + i);
-    if (pet_name != null) {
-      pet_name.innerHTML = pets[arrPage[i]].name;
-    }
-  }
-*/  
-
-/*
-  let start = Date.now();
-  let timerIn = setInterval(function() {
-    let timePassed = Date.now() - start;
-    let opacity = 1 - (2000 - timePassed) / 2000;
-    opacity = (opacity < 0) ? 0 : opacity;
-
-    document.querySelectorAll('.card_img').forEach(el => el.style.opacity = opacity);
-    document.querySelectorAll('.pet_name').forEach(el => el.style.opacity = opacity);
-
-    if (timePassed > 2000) clearInterval(timerIn);
-  }, 10);
-*/
-
-/*
-  let percent = (location.pathname.indexOf('main') > -1 ? 105 : 108) - Math.trunc(320 / document.documentElement.clientWidth * 100);
-  document.querySelectorAll('.card_img').forEach(el => el.style.opacity = 0);
-  document.querySelectorAll('.pet_name').forEach(el => el.style.opacity = 0);
-*/
-
   document.querySelectorAll('.pet_img').forEach(function (el, ind) {
     el.style.background = 'url(' + pets[arrPage[ind]].img + ') 0px/auto 100% no-repeat';
   })
@@ -253,23 +227,22 @@ function refreshPet() {
 
   document.querySelectorAll('.card_img').forEach(el => el.style.opacity = 0);
   document.querySelectorAll('.card_img').forEach(el => el.style.opacity = 1);
-/*  
-  for (let i=0; i<1001; i++) {
-    document.querySelectorAll('.card_img').forEach(el => el.style.opacity = i/1000);
-    document.querySelectorAll('.pet_name').forEach(el => el.style.opacity = i/1000);
-    console.log(i, i/100, document.querySelector('.card_img').style.opacity);
-  }
-*/  
+
+//  console.log(countItems, countPages);
 }
 
 // первый-вправо-влево-последний 5 кнопок
 const nav = document.querySelectorAll('.svg_nav');
 nav.forEach(el => el.addEventListener('click', function() {
 
+//    console.log('***1', countItems, countPages, curPage, arrPage);
+
     if (el.id == 'first') {curPage = 1;}
     if (el.id == 'left') {if (curPage > 1) {curPage = curPage - 1; } }
     if (el.id == 'right') {if (curPage < countPages) {curPage = curPage + 1; } }
     if (el.id == 'last') {curPage = countPages;}
+
+//    console.log('***2', countItems, countPages, curPage, arrPage, countItems * (curPage-1), countItems * curPage, arrAll.length);
 
     arrPage = arrAll.join('').slice(countItems * (curPage-1), countItems * curPage).split('');
     document.querySelector('.center').innerHTML = curPage;
@@ -279,6 +252,8 @@ nav.forEach(el => el.addEventListener('click', function() {
 
     if (curPage == countPages) {document.querySelectorAll('.svg_right').forEach(el => el.classList.remove('svg_right_hover'));}
     else {document.querySelectorAll('.svg_right').forEach(el => el.classList.add('svg_right_hover'));}
+
+//    console.log('***3', countItems, countPages, curPage, arrPage);
 
     refreshPet();
 }))
@@ -342,6 +317,7 @@ popup_close.addEventListener('mouseout', function() {
   this.style.borderColor = 'var(--color-primary)';
 })
 
+// наведение мышки и активизация кнопки закрытия по затемненной области
 popup_area.addEventListener('mouseover', function() {
   let popup = document.querySelector('.popup-close');
   popup.style.backgroundColor = 'var(--color-primary-light)';
@@ -352,6 +328,34 @@ popup_area.addEventListener('mouseout', function() {
   let popup = document.querySelector('.popup-close');
   popup.style.backgroundColor = 'transparent';
   popup.style.borderColor = 'var(--color-primary)';
+}) 
+/*
+// наведение мышки и активизация кнопки закрытия по области под кнопкой
+const popup_content = document.querySelector('.popup-content');
+popup_content.addEventListener('mouseover', function() {
+  let popup = document.querySelector('.popup-close');
+  popup.style.backgroundColor = 'var(--color-primary-light)';
+  popup.style.borderColor = 'var(--color-primary-light)';
+}) 
+
+popup_content.addEventListener('mouseout', function() {
+  let popup = document.querySelector('.popup-close');
+  popup.style.backgroundColor = 'transparent';
+  popup.style.borderColor = 'var(--color-primary)';
+}) 
+
+// наведение мышки и деАктивизация кнопки закрытия по области под кнопкой
+const m_modal = document.querySelector('.m-modal');
+m_modal.addEventListener('mouseover', function() {
+  let popup = document.querySelector('.popup-close');
+  popup.style.backgroundColor = 'red';
+  popup.style.borderColor = 'var(--color-primary)';
+}) 
+
+m_modal.addEventListener('mouseout', function() {
+  let popup = document.querySelector('.popup-close');
+  popup.style.backgroundColor = 'var(--color-primary-light)';
+  popup.style.borderColor = 'var(--color-primary-light)';
 }) 
 
 /*
