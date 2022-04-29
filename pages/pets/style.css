@@ -912,11 +912,7 @@ img {
 		justify-content: space-around;
 		align-items: flex-end;
 	}
-/*
-	.content-footer {
-		margin: 0 0 0 20px;
-	}
-*/
+
 	.content-footer-right {
 		margin: 35px 0 0 0;	
 	}
